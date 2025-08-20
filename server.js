@@ -1,4 +1,4 @@
-//  This is the main entry pount for our server
+//  This is the main entry point for our server
 
 // 1. Import the express library
 const express = require('express');
