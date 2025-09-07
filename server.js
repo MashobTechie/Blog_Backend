@@ -29,7 +29,7 @@ app.use(express.json());
 
 // Connect MONGODB
 
-mongoose.connect(MONGODB_URI)  
+mongoose.connect(MONGODB_URI)
     .then(() => {
         console.log('Connected to MongoDB successfully');
     })
@@ -56,4 +56,7 @@ app.listen(PORT, () => {
     console.log(`Server is running on PORT  ${PORT}`);
 });
 
+// REST  = Representational State  Transfer
+
+ get, POST, PUT, Delete
 
