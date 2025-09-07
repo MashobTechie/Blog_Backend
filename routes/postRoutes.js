@@ -78,7 +78,42 @@ router.get('/', async (req, res) => {
              });
         }
 
-    })
+    });
 
+
+
+    // Route 4: Update a post by ID
+    // PUT /posts/:id
+    router.put('/:id', getPost, async (req, res) => {
+        if (req.body.title != null) {
+            res.post.title = req.body.title;
+        }
+        if (req.body.content != null) {
+            res.post.content = req.body.content;
+        }
+        if (req.body.author != null) {
+            res.post.author = req.body.author;
+        }
+
+        try {
+            const updatedPost = await res.post.save();
+            res.json(updatedPost);
+        } catch (error) {
+            console.error('Error updating post:', error);
+            res.status(500).json({ error: 'Internal server error' });
+        }
+    });
+
+    // Route 5: Delete a post by ID
+    // DELETE /posts/:id
+    router.delete('/:id', getPost, async (req, res) => {
+        try {
+            await res.post.deleteOne(); // Use deleteOne() method on the document instance
+            res.json({ message: 'Post deleted successfully' });
+        } catch (error) {
+            console.error('Error deleting post:', error);
+            res.status(500).json({ error: 'Internal server error' });
+        }
+    });
 
     module.exports = router;
